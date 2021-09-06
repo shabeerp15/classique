@@ -1,0 +1,77 @@
+<style>
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-section {
+  max-width: 400px;
+  height: auto;
+  box-shadow: 0 4px 6px #075564;
+  padding: 15px;
+  margin-top: 8rem;
+  border: 1px solid rgb(0, 0, 0);
+}
+.login-header h1 {
+  margin: 0;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  color: #348596;
+  text-align: center;
+}
+.login-container {
+  width: 100%;
+  text-align: center;
+}
+.login-container input {
+  border-radius: 5px;
+  border: 1px solid rgb(0, 0, 0);
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #0e8199;
+  outline: none;
+  box-shadow: 0 4px 6px #075564;
+  margin-bottom: 15px;
+  height: 45px;
+  font-size: 14px;
+}
+.login-container input::placeholder {
+  color: #348596;
+}
+#login-btn {
+  width: auto;
+  background-color: #0a6172;
+  
+  border-radius: 5px;
+  border: 1px solid rgb(12, 115, 146);
+  outline: none;
+  box-shadow: 0 4px 6px #075564;
+  color: #0e8199;
+  padding: 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-size-adjust: inherit;
+  padding: 10px;
+  letter-spacing: 0.1em;
+}
+</style>
+
+<div class="row">
+        <div class="container">
+            <div class="login-section">
+                <div class="login-header">
+                    <h1>Login Here</h1>
+                </div>
+                <div class="login-container">
+                    <form action="/admin/admin-login" method="POST">
+                        <input type="text" name="email" placeholder="Email" />
+                        <input type="password" name="password" placeholder="Password" />
+                        <button type="submit" id="login-btn">Login</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>

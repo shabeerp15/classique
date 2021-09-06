@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/vendor.min.css">
+    <link rel="stylesheet" href="/stylesheets/plugins.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+
+    <link href="css/bootstrapf9e3.css?v=1.1" rel="stylesheet" type="text/css"/>
+
+  <!-- custom style -->
+  <link href="/css/uif9e3.css?v=1.1" rel="stylesheet" type="text/css"/>
+  <link href="/css/responsivef9e3.css?v=1.1" rel="stylesheet" />
+
+
+ 
+
+  
+	
+
+  </head>
+  <body>
+    {{#if user}}
+    {{>user-header}}
+    {{/if}}
+    {{#if admin}}
+    {{>admin-header}}
+    {{/if}}
+    {{{body}}}
+
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/js/plugins.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
