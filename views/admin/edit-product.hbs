@@ -1,0 +1,154 @@
+
+
+<main class="main-wrap">
+    <header class="main-header navbar">
+		
+		<div class="col-nav">
+			<ul class="nav">
+				
+				<li class="nav-item">
+					<a class="nav-link btn-icon" href="/admin/logout">Logout</i> </a>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+        <section class="content-main" style="max-width: 720px">
+	
+	<div class="content-header">
+		<h2 class="content-title">Edit Product </h2>
+		<div>
+			<a href="#" class="btn btn-outline-danger"> &times; Discard</a>
+		</div>
+	</div>
+    
+	<div class="card mb-4">
+          <div class="card-body">
+			<form action="/admin/edit-product/{{result._id}}" enctype="multipart/form-data" method="POST">
+				<div class="mb-4">
+					<label for="product_name" class="form-label">Product title</label>
+					<input type="text" name="title" placeholder="Type here" class="form-control" id="product_name"
+                    value="{{result.title}}" />
+				</div>
+
+				<div class="mb-4">
+					<label class="form-label">Full description</label>
+					<textarea placeholder="Type here" name="description" class="form-control" rows="4" >{{result.description}}</textarea>
+				</div>
+
+				<div class="mb-4">
+                    <label class="form-label">Change Image</label>
+					<table>
+
+                        <tr>
+                            <td><img id="blah" src="/product-images/image1/{{result._id}}.png" alt=""  width="60" height="60" style="margin-right: 10px;"></td>
+                            <td>
+                                <input class="form-control"  value="/product-images/image1/{{result._id}}.png" name="image" type="file" id="imgInp">
+                            </td>
+                        </tr>
+                        {{!-- <tr>
+                            <td><img id="blah2" src="/product-images/image2/{{result._id}}.png" alt="" width="60" height="60" style="margin-right: 10px;"></td>
+                            <td>
+                                <input class="form-control" name="image2" type="file" id="imgInp2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img id="blah3" src="/product-images/image3/{{result._id}}.png" alt="" width="60" height="60" style="margin-right: 10px;"></td>
+                            <td>
+                                <input class="form-control" name="image3" type="file" id="imgInp3">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img id="blah4" src="/product-images/image4/{{result._id}}.png" alt="" width="60" height="60" style="margin-right: 10px;"></td>
+                            <td>
+                                <input class="form-control" name="image4" type="file" id="imgInp4">
+                            </td>
+                        </tr> --}}
+
+                    </table>
+				</div>
+
+				<div class="mb-4">
+					<label for="product_name" class="form-label">Status</label>
+                    <select class="form-select" name="status">
+					    	<option > In stock</option>
+					    	<option> Out of stock </option>
+					    </select>
+				</div>
+
+				<div class="row gx-2">
+					<div class="col-sm-6 mb-3">
+					    <label class="form-label">Category</label>
+					    <select class="form-select" name="category">
+					    	<option> Mobiles</option>
+					    	<option> Laptops </option>
+					    </select>
+				  	</div>
+					  <div class="col-sm-6 mb-3">
+					    <label class="form-label">Sub-category</label>
+					    <select class="form-select" name="subCategory">
+					    	<option> Asus </option>
+					    	<option> HP </option>
+					    	<option> Dell </option>
+					    	<option> Samsung </option>
+					    	<option> Apple </option>
+					    	<option> Nokia </option>
+					    </select>
+					  </div>
+				</div> <!-- row.// -->
+
+
+				<div class="mb-4">
+					<label class="form-label">Price</label>
+					<div class="row gx-2">
+						<div class="col-4">
+						    <input placeholder="Price" name="price" type="text" class="form-control" value="{{result.price}}">
+					  	</div>
+						
+					</div> <!-- row.// -->
+				</div>
+
+				
+
+				<button class="btn btn-primary">Submit item</button>
+
+			</form>
+          </div>
+    </div> <!-- card end// -->
+
+
+	<script>
+	imgInp.onchange = evt => {
+		const [file] = imgInp.files
+		if (file) {
+			blah.src = URL.createObjectURL(file)
+			blah.style.display = "block";
+		}
+	},
+	imgInp2.onchange = evt => {
+		const [file2] = imgInp2.files
+		if (file2) {
+			blah2.src = URL.createObjectURL(file2)
+			blah2.style.display = "block";
+		}
+	},
+	imgInp3.onchange = evt => {
+		const [file3] = imgInp3.files
+		if (file3) {
+			blah3.src = URL.createObjectURL(file3)
+			blah3.style.display = "block";
+		}
+	},
+	imgInp4.onchange = evt => {
+		const [file4] = imgInp4.files
+		if (file4) {
+			blah4.src = URL.createObjectURL(file4)
+			blah4.style.display = "block";
+		}
+	}
+</script>
+    
+
+
+</section> <!-- content-main end// -->
+</main>

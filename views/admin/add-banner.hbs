@@ -2,34 +2,16 @@
 
 <main class="main-wrap">
     <header class="main-header navbar">
-        <div class="col-search">
-            <form class="searchform">
-                <div class="input-group">
-                  <input list="search_terms" type="text" class="form-control" placeholder="Search term">
-                  <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i> </button>
-                </div>
-                
-            </form>
-        </div>
-        <div class="col-nav">
-           <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
-           <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link btn-icon" onclick="darkmode(this)" title="Dark mode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link btn-icon" href="#"> <i class="material-icons md-notifications_active"></i> </a>
-            </li>
-            
-            <li class="dropdown nav-item">
-              <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#"> <img class="img-xs rounded-circle" src="images/people/avatar1.jpg" alt="User"></a>
-              <div class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item text-danger" href="#">Exit</a>
-              </div>
-            </li>
-          </ul> 
-        </div>
-    </header>
+		
+		<div class="col-nav">
+			<ul class="nav">
+				
+				<li class="nav-item">
+					<a class="nav-link btn-icon" href="/admin/logout">Logout</i> </a>
+				</li>
+			</ul>
+		</div>
+	</header>
 
         <section class="content-main" style="max-width: 720px">
 	
@@ -43,22 +25,22 @@
 			<form action="/admin/add-banner" enctype="multipart/form-data" method="POST">
 				<div class="mb-4">
 					<label for="product_name" class="form-label">Banner title</label>
-					<input type="text" name="firstTitle" placeholder="Type here" class="form-control" id="product_name">
+					<input type="text" name="firstTitle" placeholder="Type here" class="form-control" id="product_name" required>
 				</div>
 
 				<div class="mb-4">
 					<label for="product_name" class="form-label">Second title</label>
-					<input type="text" name="secondTitle" placeholder="Type here" class="form-control" id="product_name">
+					<input type="text" name="secondTitle" placeholder="Type here" class="form-control" id="product_name" required>
 				</div>
 
 				<div class="mb-4">
 					<label for="product_name" class="form-label">Short Description</label>
-					<input type="text" name="description" placeholder="Type here" class="form-control" id="product_name">
+					<input type="text" name="description" placeholder="Type here" class="form-control" id="product_name" required>
 				</div>
 
 				<div class="mb-4">
 					<label class="form-label">Image</label>
-					<input class="form-control" name="image" type="file">
+					<input class="form-control" name="image" type="file" required >
 				</div>
 				
 				<button class="btn btn-primary">Submit item</button>

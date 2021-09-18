@@ -19,18 +19,26 @@ module.exports = {
         })
     },
 
-    userLogin:(userData)=>{
-        return new Promise(async (resolve,reject)=>{
+    userLogin: (userData) => {
+        return new Promise(async (resolve, reject) => {
             let response = {}
-            let user = await db.get().collection(collection.USER_COLLECTION).findOne({ email: userData.email })
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({ email: userData.loginEmail })
             if (user) {
-
-                if (user.password == userData.password) {
-                    response.status = true
+                if(user.status){
+                    if (user.password == userData.loginPassword) {
+                        response.status = true
+                        response.user = user.email
+                        resolve(response)
+                    }
+                    else {
+                        response.status = false
+                        resolve(response)
+                    }
+                    response.error= true
                     resolve(response)
                 }
-                else {
-                    response.status = false
+                else{
+                    response.error= false
                     resolve(response)
                 }
             } else {
@@ -40,7 +48,7 @@ module.exports = {
         })
     },
 
-    adminLogin:(userData)=>{
+    adminLogin: (userData) => {
         return new Promise(async (resolve, reject) => {
             let data = {}
             let user = await db.get().collection(collection.ADMIN_COLLECTION).findOne({ email: userData.email })
@@ -62,12 +70,23 @@ module.exports = {
     },
 
 
-    getAllUsers:()=>{
-        return new Promise(async(resolve,reject)=>{
+    getAllUsers: () => {
+        return new Promise(async (resolve, reject) => {
             let user = db.get().collection(collection.USER_COLLECTION).find().toArray()
             resolve(user)
         })
-    }
+    },
 
 
+    blockUser: (userId,userStatus) => {
+        return new Promise(async (resolve, reject) => {
+            await db.get().collection(collection.USER_COLLECTION).updateOne({_id:objectId(userId)},
+                [{"$set": {status: {"$not": "$status"}}}]
+            ).then(()=>{
+                resolve()
+            })             
+        })
+    },
+
+    
 }

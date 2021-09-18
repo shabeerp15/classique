@@ -1,0 +1,75 @@
+
+
+<main class="main-wrap">
+    <header class="main-header navbar">
+		
+		<div class="col-nav">
+			<ul class="nav">
+				
+				<li class="nav-item">
+					<a class="nav-link btn-icon" href="/admin/logout">Logout</i> </a>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+        <section class="content-main" style="max-width: 720px">
+	
+	<div class="content-header">
+		<h2 class="content-title">Add Banner </h2>
+		
+	</div>
+
+	<div class="card mb-4">
+          <div class="card-body">
+			<form action="/admin/add-brand" enctype="multipart/form-data" method="POST">
+				<div class="mb-4">
+					<label for="product_name" class="form-label">Brand title</label>
+					<input type="text" name="title" placeholder="Type here" class="form-control" id="product_name" required>
+				</div>
+
+				<div class="mb-4">
+					<label class="form-label">Brand logo</label>
+					<input class="form-control" name="image" type="file" required >
+				</div>
+				
+				<button class="btn btn-primary">Submit item</button>
+
+			</form>
+          </div>
+    </div> <!-- card end// -->
+
+    
+
+
+</section> <!-- content-main end// -->
+
+<div class="p-5">
+    <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Barand Name</th>
+                        <th scope="col">Brand Image</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each brand}}
+                    <tr>
+                        <th scope="row" class="serialNumber">{{@index}}</th>
+                        <td>{{this.title}}</td>
+                        <td><img src="/brand/{{this._id}}.jpg" style="width: 50px; height: 35px;"/></td>
+                        <td><a href="/admin/delete-company/?id={{this._id}}"><i class="far fa-trash-alt" style="color: red;"></i></a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+</div>
+
+</main>
+
+<script>
+    let idNumber = document.getElementsByClassName('serialNumber')
+    for (var i = 0; i < idNumber.length; i++) idNumber[i].innerHTML = Number(idNumber[i].innerHTML) + 1
+</script>

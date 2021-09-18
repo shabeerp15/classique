@@ -1,0 +1,110 @@
+<main class="main-wrap">
+    <header class="main-header navbar">
+
+        <div class="col-nav">
+            <ul class="nav">
+
+                <li class="nav-item">
+                    <a class="nav-link btn-icon" href="/admin/logout">Logout</i> </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="content-main">
+        <div class="content-header">
+            <h2 class="content-title">Categories</h2>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form action="/admin/create-category" method="POST">
+                            <div class="mb-4">
+                                <label for="product_name" class="form-label">Categery</label>
+                                <input type="text" placeholder="Type here" class="form-control" id="product_name"
+                                    name="category" required/>
+                            </div>
+                            <div class="mb-4">
+                                <label for="product_slug" class="form-label">Sub Category</label>
+                                <input type="text" placeholder="Type here" class="form-control" id="product_slug" required/>
+                                <input type="button" id="insert" value="Insert" />
+                                <ul class="form-control">
+                                    <li id="subCategory"></li>
+                                </ul>
+
+                            </div>
+
+                            </select>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function () {
+
+                                    $("#insert").click(function () {
+                                        $("#subCategory").append('<input name="subCategory" value="' + $("#product_slug").val() + '">');
+                                    });
+
+                                });
+                            </script>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Create category</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-8">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                    <th>Sub Category</th>
+                                    <th>Delete</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each categories}}
+                                <tr>
+                                    <td class="serialNumber">{{@index}}</td>
+                                    <td><b>{{this.category}}</b></td>
+                                    <td>{{#each this.subCategory}}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {{this}}
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a onclick="return confirm('Are you sure?')"
+                                                    href="/admin/delete-subCategory/?id={{this}}&category={{../this.category}}">
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                </a>
+                                            </div>
+
+                                            <br>
+
+                                        </div>
+                                        {{/each}}
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Are you sure?')"
+                                            href="/admin/delete-category/?id={{this._id}}"><i
+                                                class="far fa-trash-alt text-danger"></i></a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div> <!-- .col// -->
+                </div> <!-- .row // -->
+            </div> <!-- card body .// -->
+        </div> <!-- card .// -->
+    </section> <!-- content-main end// -->
+
+</main>
+
+<script>
+    let idNumber = document.getElementsByClassName('serialNumber')
+    for (var i = 0; i < idNumber.length; i++) idNumber[i].innerHTML = idNumber[i].innerHTML - (-1)
+</script>

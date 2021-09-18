@@ -12,6 +12,7 @@ var db = require('./config/connection')
 
 var app = express();
 var fileUpload = require('express-fileupload')
+var session = require('express-session')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,10 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
+app.use(session({ secret: 'credentials.cookieSecret', cookie: { maxAge: 269999999999 }, resave:true, saveUninitialized:true}))
 
 db.connect( (err)=> {
   if(err) console.log("Connection Error")
-  else console.log("http://localhost:3000")
+  else console.log("http://localhost:3001")
 })
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);

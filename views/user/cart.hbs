@@ -1,0 +1,173 @@
+<!-- Breadcrumb Section Start -->
+<div class="section">
+
+    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area bg-light">
+        <div class="container-fluid">
+            <div class="breadcrumb-content text-center">
+                <h1 class="title">Shopping Cart</h1>
+                <ul>
+                    <li>
+                        <a href="index.html">Home </a>
+                    </li>
+                    <li class="active"> Shopping Cart</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End -->
+
+</div>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Start -->
+<div class="section section-margin">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Cart Table Start -->
+                <div class="cart-table table-responsive">
+                    <table class="table table-bordered">
+
+                        <!-- Table Head Start -->
+                        <thead>
+                            <tr>
+                                <th class="pro-thumbnail">Image</th>
+                                <th class="pro-title">Product</th>
+                                <th class="pro-price">Price</th>
+                                <th class="pro-quantity">Quantity</th>
+                                <th class="pro-subtotal">Total</th>
+                                <th class="pro-remove">Remove</th>
+                            </tr>
+                        </thead>
+                        <!-- Table Head End -->
+
+                        <!-- Table Body Start -->
+                        <tbody>
+                            {{#each userCartData}}
+                            <tr>
+                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
+                                            src="/product-images/image1/{{this.productsData._id}}.png" alt="Product"
+                                            width="100" /></a></td>
+                                <td class="pro-title"><a href="#">{{this.productsData.title}}</a></td>
+                                <td class="pro-price"><span id="productPrice">{{this.productsData.price}}</span></td>
+                                <td class="pro-quantity">
+                                    {{#if this.Quantity}}<button id="decreament"
+                                        onclick="changeQuantity('{{this._id}}','{{this.productsData._id}}',-1,-{{this.Price}})">-</button>{{/if}}
+                                    <span id="{{this.productsData._id}}">{{this.Quantity}}</span>
+                                    <button
+                                        onclick="changeQuantity('{{this._id}}','{{this.productsData._id}}',1,{{this.Price}})">+</button>
+                                </td>
+                                <td class="pro-subtotal" ><span id="productSubTotal{{this.productsData._id}}">{{this.Price}}</span></td>
+                                <td class="pro-remove"><a onclick="return confirm('Are you sure?')" 
+                                        href="/deleteCartItem/?id={{this._id}}&proId={{this.productsData._id}}"><i class="pe-7s-trash"></i></a></td>
+                            </tr>
+                            
+                            {{/each}}
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                            <script>
+                                function changeQuantity(cartId, proId, count,price) {
+                                    let quantity = document.getElementById(proId).innerHTML
+                                    $.ajax({
+                                        url: '/change-product-quantity',
+                                        data: {
+                                            cart: cartId,
+                                            product: proId,
+                                            count: count,
+                                            price : price,
+                                        },
+                                        method: 'post',
+                                        dataType: 'json',
+                                        success: (response) => {
+                                            document.getElementById(proId).innerHTML = response.products[0].quantity
+                                            document.getElementById('productSubTotal'+proId).innerHTML = response.products[0].total
+                                            if(response.products[0].quantity<=1){
+                                                 document.getElementById('decreament').style.display='none'
+                                            }
+                                            else{
+                                                document.getElementById('decreament').style.display='inline'
+                                            }
+                                        }
+                                    })
+                                }
+                            </script>
+
+                        </tbody>
+                        <!-- Table Body End -->
+
+                    </table>
+                </div>
+                <!-- Cart Table End -->
+
+                <!-- Cart Update Option Start -->
+                <div class="cart-update-option d-block d-md-flex justify-content-between">
+
+                    <!-- Apply Coupon Wrapper Start -->
+                    <div class="apply-coupon-wrapper">
+                        <form action="#" method="post" class=" d-block d-md-flex">
+                            <input type="text" placeholder="Enter Your Coupon Code" required />
+                            <button class="btn btn-dark btn-hover-primary rounded-0">Apply Coupon</button>
+                        </form>
+                    </div>
+                    <!-- Apply Coupon Wrapper End -->
+
+                    
+
+                </div>
+                <!-- Cart Update Option End -->
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ms-auto col-custom">
+
+                <!-- Cart Calculation Area Start -->
+                <div class="cart-calculator-wrapper">
+
+                    <!-- Cart Calculate Items Start -->
+                    <div class="cart-calculate-items">
+
+                        <!-- Cart Calculate Items Title Start -->
+                        <h3 class="title">Cart Totals</h3>
+                        <!-- Cart Calculate Items Title End -->
+
+                        <!-- Responsive Table Start -->
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td>Sub Total</td>
+                                    <td>{{total}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>00</td>
+                                </tr>
+                                <tr class="total">
+                                    <td>Total</td>
+                                    <td class="total-amount">{{total}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- Responsive Table End -->
+
+                    </div>
+                    <!-- Cart Calculate Items End -->
+
+                    <!-- Cart Checktout Button Start -->
+                    <a href="/checkout" class="btn btn-dark btn-hover-primary rounded-0 w-100">Proceed To
+                        Checkout</a>
+                    <!-- Cart Checktout Button End -->
+
+                </div>
+                <!-- Cart Calculation Area End -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Shopping Cart Section End -->

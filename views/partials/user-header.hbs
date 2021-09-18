@@ -1,4 +1,29 @@
 <div class='header section'>
+
+    <div class="header-top bg-light">
+        <div class="container d-flex flex-row-reverse">
+            <div class="row row-cols-xl-2 align-items-center ">
+                <div class="col d-none d-lg-block">
+                    <div class="header-top-lan-curr-link">
+                        <div class="header-top-lan dropdown ">
+                            <button class="dropdown-toggle" data-bs-toggle="dropdown">My Account <i
+                                    class="fa fa-angle-down"></i></button>
+
+                            <ul class="dropdown-menu dropdown-menu-right animate slideIndropdown">
+                                {{#if userEmail}}
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                {{else}}
+                                <li><a class="dropdown-item" href="/login">Login</a></li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header Bottom Start -->
     <div class='header-bottom'>
         <div class='header-sticky'>
@@ -23,62 +48,27 @@
                                         <span>
                                             Home
                                         </span>
+                                    </a>
+                                    
+                                </li>
+                                <li class='has-children position-static'>
+                                    <a href='/shop-left-sidebar'>
+                                        <span>
+                                            Products
+                                        </span>
+                                    </a>
+                                    
+                                </li>
+                                <li class='has-children'>
+                                    <a href='#'>
+                                        <span>
+                                            Pages
+                                        </span>
 
                                         <i class='fa fa-angle-down'></i>
                                     </a>
                                     <ul class='sub-menu'>
                                         <li>
-                                            <a href='/'>
-                                                Home
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class='has-children position-static'>
-                                    <a href='#'>
-                                        <span>
-                                            Shop
-                                        </span>
-
-                                        <i class='fa fa-angle-down'></i>
-                                    </a>
-                                    <ul class='mega-menu row-cols-4'>
-                                        <li class='col'>
-                                            <h4 class='mega-menu-title'>
-                                                Shop Layout
-                                            </h4>
-                                            <ul class='mb-n2'>
-                                                <li>
-                                                    <a href='shop-left-sidebar.html'>
-                                                        Left Sidebar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class='col'>
-                                            <h4 class='mega-menu-title'>
-                                                Product Layout
-                                            </h4>
-                                            <ul class='mb-n2'>
-                                                <li>
-                                                    <a href='single-product.html'>
-                                                        Single Product
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href='single-product-gallery-left.html'>
-                                                        Gallery Left
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-
-                                        <li class='col'>
-                                            <h4 class='mega-menu-title'>
-                                                Other Pages
-                                            </h4>
-                                            <ul class='mb-n2'>
-                                                <li>
                                                     <a href='my-account.html'>
                                                         My Account
                                                     </a>
@@ -94,8 +84,9 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href='cart.html'>
-                                                        Cart
+                                                    <a href='/cart'>
+                                                    
+                                                        Cart {{#if userEmail}}<span class="badge bg-success badge-light">{{cartCount}}</span>{{/if}}
                                                     </a>
                                                 </li>
                                                 <li>
@@ -108,29 +99,6 @@
                                                         Compare
                                                     </a>
                                                 </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class='has-children'>
-                                    <a href='#'>
-                                        <span>
-                                            Pages
-                                        </span>
-
-                                        <i class='fa fa-angle-down'></i>
-                                    </a>
-                                    <ul class='sub-menu'>
-                                        <li>
-                                            <a href='about.html'>
-                                                About
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href='contact.html'>
-                                                Contact
-                                            </a>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li class='has-children'>
@@ -190,11 +158,15 @@
                             <!-- Shopping Cart Header Action Button Start -->
                             <a href='javascript:void(0)' class='header-action-btn header-action-btn-cart'>
                                 <i class='pe-7s-shopbag'></i>
+                                {{#if userEmail}}
                                 <span class='header-action-num'>
-                                    3
+                                    {{cartCount}}
                                 </span>
+                                {{/if}}
                             </a>
                             <!-- Shopping Cart Header Action Button End -->
+
+
 
                             <!-- Mobile Menu Hambarger Action Button Start -->
                             <a href='javascript:void(0)'
@@ -202,33 +174,7 @@
                                 <i class='fa fa-bars'></i>
                             </a>
                             <!-- Mobile Menu Hambarger Action Button End -->
-                            <!-- User Account Header Action Button Start -->
-                            <span class='header-action-btn d-none d-md-block dropdown'>
-                                
-                                <div class="main-menu position-relative">
-                                    <ul>
-                                        <li class='has-children'>
-                                            <a href='#'>
-                                                <i class='pe-7s-user dropbtn'></i>
-                                            </a>
-                                            <ul class='sub-menu position-absolute' style="right: 0;">
-                                                <li>
-                                                    <a href='about.html'>
-                                                        Profile
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href='contact.html'>
-                                                        Logout
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
 
-                            </span>
-                            <!-- User Account Header Action Button End -->
 
                         </div>
 
@@ -286,7 +232,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href='cart.html'>
+                                    <a href='/cart'>
                                         Shopping Cart
                                     </a>
                                 </li>
@@ -393,54 +339,14 @@
 
             <!-- Language, Currency & Link Start -->
             <div class='offcanvas-lag-curr mb-6'>
-                <h2 class='title'>
-                    Languages
-                </h2>
+
                 <div class='header-top-lan-curr-link'>
                     <div class='header-top-lan dropdown'>
-                        <button class='dropdown-toggle' data-bs-toggle='dropdown'>
-                            English
-                            <i class='fa fa-angle-down'></i>
-                        </button>
-                        <ul class='dropdown-menu dropdown-menu-right animate slideIndropdown'>
-                            <li>
-                                <a class='dropdown-item' href='#'>
-                                    English
-                                </a>
-                            </li>
-                            <li>
-                                <a class='dropdown-item' href='#'>
-                                    Japanese
-                                </a>
-                            </li>
-                            <li>
-                                <a class='dropdown-item' href='#'>
-                                    Arabic
-                                </a>
-                            </li>
-                            <li>
-                                <a class='dropdown-item' href='#'>
-                                    Romanian
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class='header-top-curr dropdown'>
-                        <button class='dropdown-toggle' data-bs-toggle='dropdown'>
-                            USD
-                            <i class='fa fa-angle-down'></i>
-                        </button>
-                        <ul class='dropdown-menu dropdown-menu-right animate slideIndropdown'>
-                            <li>
-                                <a class='dropdown-item' href='#'>
-                                    USD
-                                </a>
-                            </li>
-                            <li>
-                                <a class='dropdown-item' href='#'>
-                                    Pound
-                                </a>
-                            </li>
+                        <button class="dropdown-toggle" data-bs-toggle="dropdown">My Account <i
+                                class="fa fa-angle-down"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-right animate slideIndropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -517,6 +423,7 @@
     </div>
     <!-- Offcanvas Search End -->
 
+    {{#if userEmail}}
     <!-- Cart Offcanvas Start -->
     <div class='cart-offcanvas-wrapper'>
         <div class='offcanvas-overlay'></div>
@@ -573,95 +480,9 @@
                     <!-- Product Remove End -->
                 </div>
                 <!-- Cart Product/Price End -->
-
-                <!-- Cart Product/Price Start -->
-                <div class='cart-product-wrapper mb-6'>
-                    <!-- Single Cart Product Start -->
-                    <div class='single-cart-product'>
-                        <div class='cart-product-thumb'>
-                            <a href='single-product.html'>
-                                <img src='assets/images/products/small-product/2.jpg' alt='Cart Product' />
-                            </a>
-                        </div>
-                        <div class='cart-product-content'>
-                            <h3 class='title'>
-                                <a href='single-product.html'>
-                                    Basic Jogging Shorts
-                                </a>
-                            </h3>
-                            <span class='price'>
-                                <span class='new'>
-                                    $14.50
-                                </span>
-                                <span class='old'>
-                                    $18.00
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- Single Cart Product End -->
-
-                    <!-- Product Remove Start -->
-                    <div class='cart-product-remove'>
-                        <a href='#'>
-                            <i class='fa fa-trash'></i>
-                        </a>
-                    </div>
-                    <!-- Product Remove End -->
-                </div>
-                <!-- Cart Product/Price End -->
-
-                <!-- Cart Product/Price Start -->
-                <div class='cart-product-wrapper mb-6'>
-                    <!-- Single Cart Product Start -->
-                    <div class='single-cart-product'>
-                        <div class='cart-product-thumb'>
-                            <a href='single-product.html'>
-                                <img src='assets/images/products/small-product/3.jpg' alt='Cart Product' />
-                            </a>
-                        </div>
-                        <div class='cart-product-content'>
-                            <h3 class='title'>
-                                <a href='single-product.html'>
-                                    Enjoy The Rest T-Shirt
-                                </a>
-                            </h3>
-                            <span class='price'>
-                                <span class='new'>
-                                    $20.00
-                                </span>
-                                <span class='old'>
-                                    $21.00
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- Single Cart Product End -->
-
-                    <!-- Product Remove Start -->
-                    <div class='cart-product-remove'>
-                        <a href='#'>
-                            <i class='fa fa-trash'></i>
-                        </a>
-                    </div>
-                    <!-- Product Remove End -->
-                </div>
-                <!-- Cart Product/Price End -->
-
-                <!-- Cart Product Total Start -->
-                <div class='cart-product-total'>
-                    <span class='value'>
-                        Subtotal
-                    </span>
-                    <span class='price'>
-                        220$
-                    </span>
-                </div>
-                <!-- Cart Product Total End -->
-
                 <!-- Cart Product Button Start -->
                 <div class='cart-product-btn mt-4'>
-                    <a href='cart.html' class='btn btn-dark btn-hover-primary rounded-0 w-100'>
+                    <a href='/cart' class='btn btn-dark btn-hover-primary rounded-0 w-100'>
                         View cart
                     </a>
                     <a href='checkout.html' class='btn btn-dark btn-hover-primary rounded-0 w-100 mt-4'>
@@ -675,4 +496,5 @@
         <!-- Cart Offcanvas Inner End -->
     </div>
     <!-- Cart Offcanvas End -->
+    {{/if}}
 </div>
